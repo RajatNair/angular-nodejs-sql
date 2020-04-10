@@ -1,18 +1,24 @@
 import "reflect-metadata";
-import { createConnection } from "typeorm";
+import { createConnection, AdvancedConsoleLogger } from "typeorm";
 import * as express from "express";
 import * as bodyParser from "body-parser";
 import { Request, Response } from "express";
 import { Routes } from "./routes";
-import { Customer } from "./entity/Customer";
+import { Seed } from "./seed/seed";
+import { Logging } from "./utility/logging";
 
+let logger;
 createConnection()
   .then(async (connection) => {
-    // create express app
+    // Create express app
     const app = express();
     app.use(bodyParser.json());
 
-    // register express routes from defined application routes
+    // Logging
+    const logSetup = new Logging("createConnection");
+    this.logger = logSetup.logger;
+
+    // Register express routes from defined application routes
     Routes.forEach((route) => {
       (app as any)[route.method](
         route.route,
@@ -36,29 +42,17 @@ createConnection()
     });
 
     // setup express app here
-    // ...
 
     // start express server
     app.listen(3000);
 
-    // insert new customers for test
-    await connection.manager.save(
-      connection.manager.create(Customer, {
-        Name: "Timber Saw",
-        Age: 27,
-        Sex: "Male",
-      })
-    );
-    await connection.manager.save(
-      connection.manager.create(Customer, {
-        Name: "Phantom Assassin",
-        Age: 24,
-        Sex: "Male",
-      })
-    );
+    // Generate seed data for testing
+    // Seed.generateSeedData(connection);
 
-    console.log(
+    this.logger.info(
       "Express server has started on port 3000. Open http://localhost:3000/api/customers to see results"
     );
   })
-  .catch((error) => console.log(error));
+  .catch((error) => {
+    this.logger.error(error);
+  });

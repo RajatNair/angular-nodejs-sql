@@ -1,11 +1,18 @@
 import { getRepository } from "typeorm";
 import { NextFunction, Request, Response } from "express";
 import { Customer } from "../entity/Customer";
+import { Logging } from "../utility/logging";
 
 export class CustomerController {
   private customerRepository = getRepository(Customer);
+  private logger;
+  constructor() {
+    const logSetup = new Logging("CustomerController");
+    this.logger = logSetup.logger;
+  }
 
   async all(request: Request, response: Response, next: NextFunction) {
+    this.logger.debug("Fetch all customer data");
     return this.customerRepository.find();
   }
 

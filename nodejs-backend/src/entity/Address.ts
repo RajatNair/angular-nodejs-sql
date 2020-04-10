@@ -9,6 +9,5 @@ export class Address {
   Address: string;
 
   @Column()
-  emp_id: number;
-
+  customer_id: number;
 }

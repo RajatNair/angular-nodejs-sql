@@ -1,10 +1,10 @@
 -- SQLite
 DROP table Customer;
 create table Customer (
-	id INT,
-	Name VARCHAR(50),
-	Age INT,
-	Sex VARCHAR(50)
+	id INT PRIMARY KEY,
+	Name VARCHAR(50) NOT NULL,
+	Age INT NOT NULL,
+	Sex VARCHAR(50) NOT NULL
 );
 insert into Customer (id, Name, Age, Sex) values (1, 'Morissa Applegate', 29, 'Female');
 insert into Customer (id, Name, Age, Sex) values (2, 'Bradan Milbourne', 43, 'Male');
