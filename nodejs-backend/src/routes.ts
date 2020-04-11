@@ -4,31 +4,31 @@ import { AddressController } from "./controller/AddressController";
 export const Routes = [
   {
     method: "get",
-    route: "/api/customers",
+    route: "/api/v1/customers",
     controller: CustomerController,
     action: "all",
   },
   {
     method: "get",
-    route: "/api/customers/:id",
+    route: "/api/v1/customers/:id",
     controller: CustomerController,
     action: "one",
   },
   {
     method: "get",
-    route: "/api/customers/:id/address",
+    route: "/api/v1/customers/:id/addresses",
     controller: AddressController,
     action: "ids",
   },
   {
     method: "post",
-    route: "/api/customers",
+    route: "/api/v1/customers",
     controller: CustomerController,
     action: "save",
   },
   {
     method: "delete",
-    route: "/api/customers/:id",
+    route: "/api/v1/customers/:id",
     controller: CustomerController,
     action: "remove",
   },

@@ -18,10 +18,24 @@ createConnection()
     const logSetup = new Logging("createConnection");
     this.logger = logSetup.logger;
 
+    // CORS
+    var cors = require("cors");
+    const whitelist = ["http://localhost:4200", "https://api.aunlead.com"];
+    var corsOptions = {
+      origin: function (origin, callback) {
+        if (whitelist.indexOf(origin) !== -1 || !origin) {
+          callback(null, true);
+        } else {
+          callback(new Error("Not allowed by CORS"));
+        }
+      },
+    };
+
     // Register express routes from defined application routes
     Routes.forEach((route) => {
       (app as any)[route.method](
         route.route,
+        cors(corsOptions),
         (req: Request, res: Response, next: Function) => {
           const result = new (route.controller as any)()[route.action](
             req,
@@ -41,8 +55,6 @@ createConnection()
       );
     });
 
-    // setup express app here
-
     // start express server
     app.listen(3000);
 
@@ -50,7 +62,7 @@ createConnection()
     // Seed.generateSeedData(connection);
 
     this.logger.info(
-      "Express server has started on port 3000. Open http://localhost:3000/api/customers to see results"
+      "Express server has started on port 3000. Open http://localhost:3000/api/v1/customers to see results"
     );
   })
   .catch((error) => {

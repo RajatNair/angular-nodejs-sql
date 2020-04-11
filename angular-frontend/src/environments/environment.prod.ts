@@ -1,3 +1,6 @@
+const restEndpoint: string = 'https://api.aunlead.com';
+
 export const environment = {
-  production: true
+  production: true,
+  server: restEndpoint,
 };

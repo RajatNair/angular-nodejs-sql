@@ -1,0 +1,20 @@
+// Variables
+@row-color-base: #f5f5f5;
+
+.no-padding {
+  padding: 0px;
+}
+
+.inner-table {
+  width: 100%;
+}
+
+.secondary-rows {
+  background-color: lighten(@row-color-base, 20%);
+}
+.primary-rows {
+  background-color: darken(@row-color-base, 10%);
+  :hover {
+    cursor: pointer;
+  }
+}

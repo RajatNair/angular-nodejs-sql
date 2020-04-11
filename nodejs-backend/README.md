@@ -10,15 +10,15 @@ Steps to run this project:
 
 ### REST API Endpoints
 
-- To list all customers - `/api/customers`
-- To fetch specific customer details - `/api/customers/:customer-id`
-- To fetch all addresses of a specific customer - `/api/customers/:customer-id/address`
+- To list all customers - `/api/v1/customers`
+- To fetch specific customer details - `/api/v1/customers/:customer-id`
+- To fetch all addresses of a specific customer - `/api/v1/customers/:customer-id/addresses`
 
 ### Database Schema
 
 ```sql
 CREATE TABLE Customer (
-	id INT PRIMARY KEY,
+	Id INT PRIMARY KEY,
 	Name VARCHAR(50) NOT NULL,
 	Age INT NOT NULL,
 	Sex VARCHAR(50) NOT NULL
@@ -27,10 +27,13 @@ CREATE TABLE Customer (
 
 ```sql
 CREATE TABLE Address (
-	id INT PRIMARY KEY,
+	Id INT PRIMARY KEY,
 	Address VARCHAR(50) NOT NULL,
-	customer_id INT  NOT NULL,
-	FOREIGN KEY (customer_id)
+	CustomerId INT  NOT NULL,
+	FOREIGN KEY (CustomerId)
        REFERENCES Customer (id) 
 )
 ```
+
+### Courtesy
+Mock data from [mockaroo](https://www.mockaroo.com)

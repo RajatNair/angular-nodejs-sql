@@ -1,6 +1,9 @@
 {
   "name": "angular-frontend",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "UI on Angular 9 for NodeJS based REST API service",
+  "author": "Rajat Nair <contact@aunlead.com>",
+  "homepage": "https://www.aunlead.com",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -16,13 +19,13 @@
     "@angular/compiler": "~9.1.1",
     "@angular/core": "~9.1.1",
     "@angular/forms": "~9.1.1",
+    "@angular/localize": "^9.1.1",
     "@angular/platform-browser": "~9.1.1",
     "@angular/platform-browser-dynamic": "~9.1.1",
     "@angular/router": "~9.1.1",
     "@datorama/akita": "^4.22.0",
-    "@ng-bootstrap/ng-bootstrap": "^2.0.0-alpha.0",
-    "@ng-bootstrap/schematics": "^2.0.0-alpha.1",
-    "bootstrap": "^4.0.0",
+    "@ng-bootstrap/ng-bootstrap": "^6.0.2",
+    "bootstrap": "^4.4.1",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
