@@ -3,16 +3,16 @@ import { Addresses } from './addresses.model';
 interface ICustomer {
   Id: number;
   Name: string;
-  Age: string;
-  Sex: number;
+  Age: number;
+  Sex: string;
 }
 
 export class Customer implements ICustomer {
   Id: number;
   Name: string;
-  Age: string;
-  Sex: number;
-  private _Addresses: Addresses[] = [];
+  Age: number;
+  Sex: string;
+  private _Addresses?: Addresses[] = [];
   public get Addresses(): Addresses[] {
     return this._Addresses;
   }
@@ -20,7 +20,7 @@ export class Customer implements ICustomer {
     this._Addresses = v;
   }
 
-  private _collapse: boolean = true;
+  private _collapse?: boolean = true;
   public get Collapse(): boolean {
     return this._collapse;
   }

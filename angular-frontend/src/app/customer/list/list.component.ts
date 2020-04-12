@@ -33,20 +33,23 @@ export class ListComponent implements OnInit, OnDestroy {
   }
 
   onCustomerSelect(customer: Customer): void {
-    this.addressesSubscription = this.customersService
-      .getCustomerAddresses(customer.Id)
-      .subscribe(
-        (response: Addresses[]) => {
-          // Display if there are addresses for customer
-          if (response && response.length > 0) {
-            customer.Addresses = response;
-            customer.Collapse = !customer.Collapse;
+    // Call API only when user tries to expand
+    if (!customer.Collapse) {
+      this.addressesSubscription = this.customersService
+        .getCustomerAddresses(customer.Id)
+        .subscribe(
+          (response: Addresses[]) => {
+            // Display if there are addresses for customer
+            if (response && response.length > 0) {
+              customer.Addresses = response;
+            }
+          },
+          (error) => {
+            console.error(error);
           }
-        },
-        (error) => {
-          console.error(error);
-        }
-      );
+        );
+    }
+    customer.Collapse = !customer.Collapse;
   }
 
   onAddressSelect(customer: Customer): void {
