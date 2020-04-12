@@ -20,16 +20,17 @@ export const Routes = [
     controller: AddressController,
     action: "ids",
   },
-  {
-    method: "post",
-    route: "/api/v1/customers",
-    controller: CustomerController,
-    action: "save",
-  },
-  {
-    method: "delete",
-    route: "/api/v1/customers/:id",
-    controller: CustomerController,
-    action: "remove",
-  },
+  // Allow after implementation of authentication
+  // {
+  //   method: "post",
+  //   route: "/api/v1/customers",
+  //   controller: CustomerController,
+  //   action: "save",
+  // },
+  // {
+  //   method: "delete",
+  //   route: "/api/v1/customers/:id",
+  //   controller: CustomerController,
+  //   action: "remove",
+  // },
 ];

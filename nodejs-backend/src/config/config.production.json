@@ -1,0 +1,5 @@
+{
+    "port": 3000,
+    "CORS_whitelist": ["http://localhost:4200", "https://api.aunlead.com"],
+    "seed_data": false
+}

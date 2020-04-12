@@ -1,11 +1,12 @@
 import "reflect-metadata";
-import { createConnection, AdvancedConsoleLogger } from "typeorm";
+import { createConnection } from "typeorm";
 import * as express from "express";
 import * as bodyParser from "body-parser";
 import { Request, Response } from "express";
 import { Routes } from "./routes";
 import { Seed } from "./seed/seed";
 import { Logging } from "./utility/logging";
+import { Config } from "./utility/config";
 
 let logger;
 createConnection()
@@ -18,18 +19,15 @@ createConnection()
     const logSetup = new Logging("createConnection");
     this.logger = logSetup.logger;
 
+    // Configuration
+    const config = Config.getValuesFromFile(process.env.NODE_ENV);
+    this.logger.info("Node Environment Config - " + process.env.NODE_ENV);
+    this.logger.info("Port Config - " + config.port);
+    this.logger.info("CORS Whitelist Config - " + config.CORS_whitelist);
+
     // CORS
-    var cors = require("cors");
-    const whitelist = ["http://localhost:4200", "https://api.aunlead.com"];
-    var corsOptions = {
-      origin: function (origin, callback) {
-        if (whitelist.indexOf(origin) !== -1 || !origin) {
-          callback(null, true);
-        } else {
-          callback(new Error("Not allowed by CORS"));
-        }
-      },
-    };
+    const cors = require("cors");
+    const corsOptions = Config.getCORConfig(config.CORS_whitelist);
 
     // Register express routes from defined application routes
     Routes.forEach((route) => {
@@ -56,13 +54,19 @@ createConnection()
     });
 
     // start express server
-    app.listen(3000);
+    app.listen(config.port);
 
     // Generate seed data for testing
-    // Seed.generateSeedData(connection);
+    if (config.seed_data) {
+      Seed.generateSeedData(connection);
+    }
 
     this.logger.info(
-      "Express server has started on port 3000. Open http://localhost:3000/api/v1/customers to see results"
+      "Express server has started on port " +
+        config.port +
+        ". Open http://localhost:" +
+        config.port +
+        "/api/v1/customers to see results"
     );
   })
   .catch((error) => {
