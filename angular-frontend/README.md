@@ -17,7 +17,7 @@ docker build -t aunlead/angular-frontend:1.0.0 .
 Docker run command -
 
 ```sh
-docker run -p 29160:8080 -d  --name testing-frontend aunlead/angular-frontend:1.0.0
+docker run -p 29160:80 -d  --name testing-frontend aunlead/angular-frontend:1.0.0
 ```
 
 ## Build

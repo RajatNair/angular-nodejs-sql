@@ -20,7 +20,7 @@ docker build -t aunlead/nodejs-backend:1.0.0 .
 Docker run command -
 
 ```sh
-docker run -p 29160:8080 -d --name testing-backend aunlead/nodejs-backend:1.0.0
+docker run -p 29160:3000 -d --name testing-backend aunlead/nodejs-backend:1.0.0
 ```
 
 ### REST API Endpoints

@@ -1,0 +1,55 @@
+version: "3.7"
+services:
+  web:
+    image: aunlead/angular-frontend:1.0.0
+    container_name: angular-frontend
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+    restart: on-failure
+    networks:
+      - web
+      - backend
+    depends_on:
+      - api
+    labels:
+      - "traefik.enable=true"
+      - "traefik.frontend.rule=Host:web.aunlead.com"
+      - "traefik.port=80"
+      - "traefik.docker.network=web"
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - NODE_ENV=production
+  api:
+    image: aunlead/nodejs-backend:1.0.0
+    container_name: nodejs-backend
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+    restart: on-failure
+    networks:
+      - web
+      - backend
+    depends_on:
+      - api
+    labels:
+      - "traefik.enable=true"
+      - "traefik.frontend.rule=Host:api.aunlead.com"
+      - "traefik.port=3000"
+      - "traefik.docker.network=web"
+    volumes:
+        - /etc/localtime:/etc/localtime:ro
+    environment:
+      - NODE_ENV=production
+
+networks:
+  web:
+    external: true
+  backend:
