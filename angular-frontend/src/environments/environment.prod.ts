@@ -1,4 +1,4 @@
-const restEndpoint: string = 'https://api.aunlead.com';
+const restEndpoint: string = 'https://backend.aunlead.com';
 
 export const environment = {
   production: true,
