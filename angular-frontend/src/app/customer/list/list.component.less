@@ -11,9 +11,13 @@
 
 .secondary-rows {
   background-color: lighten(@row-color-base, 20%);
+  :hover {
+    background-color: lighten(@row-color-base, 10%);
+  }
 }
+
 .primary-rows {
-  background-color: darken(@row-color-base, 10%);
+  background-color: @row-color-base;
   :hover {
     cursor: pointer;
   }

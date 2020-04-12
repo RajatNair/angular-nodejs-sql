@@ -10,7 +10,8 @@ import { Addresses } from '../models/addresses.model';
   styleUrls: ['./list.component.less'],
 })
 export class ListComponent implements OnInit, OnDestroy {
-  private subscription: Subscription;
+  private customerSubscription: Subscription;
+  private addressesSubscription: Subscription;
   customers: Customer[] = [];
 
   constructor(private customersService: CustomersService) {}
@@ -21,9 +22,9 @@ export class ListComponent implements OnInit, OnDestroy {
   }
 
   getListOfCustomers() {
-    this.subscription = this.customersService.getCustomers().subscribe(
-      (data: Customer[]) => {
-        this.customers = data;
+    this.customerSubscription = this.customersService.getCustomers().subscribe(
+      (response: Customer[]) => {
+        this.customers = response;
       },
       (error) => {
         console.error(error);
@@ -32,15 +33,20 @@ export class ListComponent implements OnInit, OnDestroy {
   }
 
   onCustomerSelect(customer: Customer): void {
-    this.customersService.getCustomerAddresses(customer.Id).subscribe(
-      (data: Addresses[]) => {
-        customer.Addresses = data;
-        customer.Collapse = !customer.Collapse;
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
+    this.addressesSubscription = this.customersService
+      .getCustomerAddresses(customer.Id)
+      .subscribe(
+        (response: Addresses[]) => {
+          // Display if there are addresses for customer
+          if (response && response.length > 0) {
+            customer.Addresses = response;
+            customer.Collapse = !customer.Collapse;
+          }
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
   }
 
   onAddressSelect(customer: Customer): void {
@@ -48,8 +54,11 @@ export class ListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
+    if (this.customerSubscription) {
+      this.customerSubscription.unsubscribe();
+    }
+    if (this.addressesSubscription) {
+      this.addressesSubscription.unsubscribe();
     }
   }
 }

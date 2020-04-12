@@ -1,6 +1,6 @@
 <div class="wrapper-content container-fluid table-responsive">
-  <p>Table is just a mapping of objects to table rows with</p>
-  <table class="table  table-hover">
+  <h5>CUSTOMER DETAILS</h5>
+  <table class="table table-hover">
     <thead class="thead-dark">
       <tr>
         <th scope="col">#</th>
@@ -11,7 +11,7 @@
     </thead>
     <tbody>
       <ng-container *ngFor="let customer of customers; let index = index">
-        <tr class="primary-rows"  (click)="onCustomerSelect(customer)">
+        <tr class="primary-rows" (click)="onCustomerSelect(customer)">
           <td>{{ customer.Id }}</td>
           <td>{{ customer.Name }}</td>
           <td>{{ customer.Age | number }}</td>
@@ -19,9 +19,7 @@
         </tr>
         <tr class="secondary-rows" *ngIf="customer.Collapse">
           <td colspan="4" class="no-padding">
-            <ng-container
-              *ngIf="customer.Addresses; then displayAddresses"
-            >
+            <ng-container *ngIf="customer.Addresses; then displayAddresses">
             </ng-container>
           </td>
         </tr>
@@ -30,7 +28,6 @@
             <tr
               class="card"
               *ngFor="let address of customer.Addresses; let index = index"
-              (click)="onAddressSelect(customer)"
             >
               <td class="card-body">
                 Address {{ index + 1 }}: &nbsp;{{ address.Address }}

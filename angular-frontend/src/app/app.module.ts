@@ -7,6 +7,7 @@ import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
 import { environment } from '../environments/environment';
 import { PageNotFoundComponent } from './shared/security/page-not-found/page-not-found.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ToolbarComponent } from './shared/toolbar/toolbar.component';
 
 const routes: Routes = [
   {
@@ -23,7 +24,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, PageNotFoundComponent],
+  declarations: [AppComponent, PageNotFoundComponent, ToolbarComponent],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes, { enableTracing: false, useHash: true }),
