@@ -16,14 +16,25 @@ export class Logging {
     this._loggerName = value;
   }
 
-  constructor(name) {
+  
+  private _logPath : string;
+  public get logPath() : string {
+    return this._logPath;
+  }
+  public set logPath(v : string) {
+    this._logPath = v;
+  }
+  
+
+  constructor(name: string, path: string = './src/logs') {
     this.loggerName = name;
+    this.logPath = path;
     this.setup();
   }
 
   setup() {
     const opts = {
-      logDirectory: ".\\src\\logs",
+      logDirectory: this.logPath,
       fileNamePattern: "rolling-<DATE>.log",
       dateFormat: "YYYY.MM.DD",
     };

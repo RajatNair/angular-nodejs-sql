@@ -1,19 +1,28 @@
-# Angular Frontend
+# Frontend on Angular 9.1.1 for NodeJS based REST API service
 
-Docker build command 
+Steps to run this project:
+
+1. Run `npm ci` command
+2. Set `restEndpoint` value in `src\environments\environment.ts` file to URL of your REST server
+3. Run `ng serve` command for live reload development. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+### Production Docker Build
+
+Docker build command -
+
 ```sh
-docker build -t angular-frontend:1.0.0 .
+docker build -t aunlead/angular-frontend:1.0.0 .
 ```
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.1.
+Docker run command -
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+```sh
+docker run -p 29160:8080 -d  --name testing-frontend aunlead/angular-frontend:1.0.0
+```
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Run `npm run release` for a production build . The build artifacts will be stored in the `dist/` directory.
 
 ## Running unit tests
 

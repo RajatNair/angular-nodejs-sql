@@ -15,12 +15,13 @@ createConnection()
     const app = express();
     app.use(bodyParser.json());
 
-    // Logging
-    const logSetup = new Logging("createConnection");
-    this.logger = logSetup.logger;
-
     // Configuration
     const config = Config.getValuesFromFile(process.env.NODE_ENV);
+
+    // Logging
+    const logSetup = new Logging("createConnection", config.log_path);
+    this.logger = logSetup.logger;
+    
     this.logger.info("Node Environment Config - " + process.env.NODE_ENV);
     this.logger.info("Port Config - " + config.port);
     this.logger.info("CORS Whitelist Config - " + config.CORS_whitelist);

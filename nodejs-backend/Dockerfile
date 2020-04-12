@@ -10,8 +10,8 @@ RUN npm ci --only=production
 # Bundle app source
 COPY . .
 
-EXPOSE 8080
+ENV NODE_ENV=production
+EXPOSE 3000
 
 # Execute entrypoint
 CMD [ "node", "node_modules/ts-node/dist/_bin.js","src/index.ts" ]
-

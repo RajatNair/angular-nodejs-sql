@@ -1,26 +1,26 @@
 {
-   "name": "nodejs-backend",
-   "version": "1.0.0",
-   "description": "REST API service built on Express and TypeORM.",
-   "author": "Rajat Nair <contact@aunlead.com>",
-   "homepage": "https://www.aunlead.com",
-   "devDependencies": {
-      "@types/node": "^8.0.29",
-      "ts-node": "3.3.0",
-      "ts-node-dev": "^1.0.0-pre.44",
-      "typescript": "3.3.3333"
-   },
-   "dependencies": {
-      "body-parser": "^1.18.1",
-      "cors": "^2.8.5",
-      "express": "^4.15.4",
-      "reflect-metadata": "^0.1.10",
-      "simple-node-logger": "^18.12.24",
-      "sqlite3": "^4.0.3",
-      "typeorm": "0.2.24"
-   },
-   "scripts": {
-      "start": "ts-node src/index.ts",
-      "dev": "ts-node-dev --respawn --transpileOnly src/index.ts"
-   }
+  "name": "nodejs-backend",
+  "version": "1.0.0",
+  "description": "REST API service built on Express and TypeORM.",
+  "author": "Rajat Nair <contact@aunlead.com>",
+  "homepage": "https://www.aunlead.com",
+  "devDependencies": {
+    "ts-node-dev": "^1.0.0-pre.44"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.1",
+    "cors": "^2.8.5",
+    "express": "^4.15.4",
+    "reflect-metadata": "^0.1.10",
+    "simple-node-logger": "^18.12.24",
+    "sqlite3": "^4.0.3",
+    "typeorm": "0.2.24",
+    "@types/node": "^8.0.29",
+    "ts-node": "3.3.0",
+    "typescript": "3.3.3333"
+  },
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "dev": "ts-node-dev --respawn --transpileOnly src/index.ts"
+  }
 }

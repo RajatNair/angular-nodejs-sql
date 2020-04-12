@@ -2,11 +2,26 @@
 
 Steps to run this project:
 
-1. Run `npm install` command
+1. Run `npm ci` command
 2. Setup database settings inside `ormconfig.json` file
 3. Database seed files inside `\seed` folder
 4. Rolling log files inside `\log` folder
-5. Run `npm run dev` command for live reload development
+5. Configuration files inside `\config` folder
+6. Run `npm run dev` command for live reload development
+
+### Production Docker Build
+
+Docker build command -
+
+```sh
+docker build -t aunlead/nodejs-backend:1.0.0 .
+```
+
+Docker run command -
+
+```sh
+docker run -p 29160:8080 -d --name testing-backend aunlead/nodejs-backend:1.0.0
+```
 
 ### REST API Endpoints
 
@@ -31,9 +46,10 @@ CREATE TABLE Address (
 	Address VARCHAR(500) NOT NULL,
 	CustomerId INT  NOT NULL,
 	FOREIGN KEY (CustomerId)
-       REFERENCES Customer (id) 
+       REFERENCES Customer (id)
 )
 ```
 
 ### Courtesy
+
 Mock data from [mockaroo](https://www.mockaroo.com)
