@@ -3,7 +3,7 @@ PRAGMA foreign_keys = ON;
 DROP TABLE Address;
 create table Address (
 	Id INT PRIMARY KEY,
-	Address VARCHAR(50) NOT NULL,
+	Address VARCHAR(500) NOT NULL,
 	CustomerId INT  NOT NULL,
 	FOREIGN KEY (CustomerId)
        REFERENCES Customer (id) 

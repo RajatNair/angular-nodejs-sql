@@ -21,14 +21,14 @@ CREATE TABLE Customer (
 	Id INT PRIMARY KEY,
 	Name VARCHAR(50) NOT NULL,
 	Age INT NOT NULL,
-	Sex VARCHAR(50) NOT NULL
+	Sex VARCHAR(6) NOT NULL
 )
 ```
 
 ```sql
 CREATE TABLE Address (
 	Id INT PRIMARY KEY,
-	Address VARCHAR(50) NOT NULL,
+	Address VARCHAR(500) NOT NULL,
 	CustomerId INT  NOT NULL,
 	FOREIGN KEY (CustomerId)
        REFERENCES Customer (id) 

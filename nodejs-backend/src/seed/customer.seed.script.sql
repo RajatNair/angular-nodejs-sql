@@ -4,7 +4,7 @@ create table Customer (
 	Id INT PRIMARY KEY,
 	Name VARCHAR(50) NOT NULL,
 	Age INT NOT NULL,
-	Sex VARCHAR(50) NOT NULL
+	Sex VARCHAR(6) NOT NULL
 );
 insert into Customer (Id, Name, Age, Sex) values (1, 'Morissa Applegate', 29, 'Female');
 insert into Customer (Id, Name, Age, Sex) values (2, 'Bradan Milbourne', 43, 'Male');
