@@ -12,12 +12,11 @@ services:
     restart: on-failure
     networks:
       - web
-      - backend
     depends_on:
       - api
     labels:
       - "traefik.enable=true"
-      - "traefik.frontend.rule=Host:web.aunlead.com"
+      - "traefik.frontend.rule=Host:test.aunlead.com"
       - "traefik.port=80"
       - "traefik.docker.network=web"
     volumes:
@@ -36,12 +35,9 @@ services:
     restart: on-failure
     networks:
       - web
-      - backend
-    depends_on:
-      - api
     labels:
       - "traefik.enable=true"
-      - "traefik.frontend.rule=Host:api.aunlead.com"
+      - "traefik.frontend.rule=Host:backend.aunlead.com"
       - "traefik.port=3000"
       - "traefik.docker.network=web"
     volumes:
@@ -52,4 +48,3 @@ services:
 networks:
   web:
     external: true
-  backend:
