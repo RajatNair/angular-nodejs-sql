@@ -1,4 +1,4 @@
-# A sample frontend on Angular 9 with REST API backed on NodeJS and Sqlite
+# A sample frontend on Angular 9 with REST API backend on NodeJS and Sqlite
 
 ### [Angular Frontend](./angular-frontend)
 
