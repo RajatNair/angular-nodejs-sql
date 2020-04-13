@@ -1,0 +1,25 @@
+{
+  "name": "e2e-testing",
+  "version": "1.0.0",
+  "description": "End to End Cypress tests for Angular 9.1.1 frontend on NodeJS based REST API service",
+  "scripts": {
+    "test": "cypress run",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RajatNair/angular-nodejs-sql.git"
+  },
+  "author": "Rajat Nair <contact@aunlead.com>",
+  "homepage": "https://www.aunlead.com",
+  "devDependencies": {
+    "cypress": "^4.3.0"
+  },
+  "dependencies": {
+    "@cypress/webpack-preprocessor": "^5.1.2",
+    "ts-loader": "^6.2.2",
+    "typescript": "^3.8.3",
+    "webpack": "^4.42.1"
+  }
+}

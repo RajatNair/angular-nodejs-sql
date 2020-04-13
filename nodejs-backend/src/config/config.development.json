@@ -1,6 +1,6 @@
 {
     "port": 3000,
-    "CORS_whitelist": ["http://localhost:3000","http://localhost:4200", "https://backend.aunlead.com"],
+    "CORS_whitelist": ["http://localhost:3000","http://localhost:4200", "https://test.aunlead.com"],
     "seed_data": false,
     "log_path": ".\\src\\logs"
 }
