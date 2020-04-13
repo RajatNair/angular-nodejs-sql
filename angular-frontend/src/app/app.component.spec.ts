@@ -22,10 +22,4 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('Angular UI for NodeJS based APIs');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    // expect(compiled.querySelector('.content span').textContent).toContain('angular-frontend app is running!');
-  });
 });

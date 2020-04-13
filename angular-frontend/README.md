@@ -22,7 +22,7 @@ docker run -p 29160:80 -d  --name testing-frontend aunlead/angular-frontend:1.0.
 
 ## Build
 
-Run `npm run release` for a production build . The build artifacts will be stored in the `dist/` directory.
+Run `npm run release` for a production build. The build artifacts will be stored in the `dist/` directory. During production builds, code linting and unit tests have to pass or build will fail.
 
 ## Running unit tests
 
