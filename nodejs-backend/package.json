@@ -14,7 +14,7 @@
     "reflect-metadata": "^0.1.10",
     "simple-node-logger": "^18.12.24",
     "sqlite3": "^4.0.3",
-    "typeorm": "0.2.24",
+    "typeorm": "0.2.25",
     "@types/node": "^8.0.29",
     "ts-node": "3.3.0",
     "typescript": "3.3.3333"
