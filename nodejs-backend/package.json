@@ -10,7 +10,7 @@
   "dependencies": {
     "body-parser": "^1.18.1",
     "cors": "^2.8.5",
-    "express": "^4.15.4",
+    "express": "^4.17.3",
     "reflect-metadata": "^0.1.10",
     "simple-node-logger": "^18.12.24",
     "sqlite3": "^4.0.3",
